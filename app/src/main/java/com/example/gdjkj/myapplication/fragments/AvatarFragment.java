@@ -13,7 +13,7 @@ import com.example.gdjkj.myapplication.R;
  */
 public class AvatarFragment extends Fragment {
 
-
+    //http://www.hindustantimes.com/rf/image_size_800x600/HT/p2/2016/05/26/Pictures/_65d9bb82-2327-11e6-bd64-8acd98c1ae00.jpg
     public AvatarFragment() {
     }
 
