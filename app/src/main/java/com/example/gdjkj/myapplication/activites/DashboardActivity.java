@@ -8,12 +8,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.example.gdjkj.myapplication.AppController;
+
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.CategoryAdapter;
 import com.example.gdjkj.myapplication.service.BackgroundSoundService;
+
+import java.util.Calendar;
 
 public class DashboardActivity extends AppCompatActivity {
     TabLayout tabLayout;
@@ -63,7 +67,11 @@ public class DashboardActivity extends AppCompatActivity {
         //      by calling onPageTitle()
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
     }
+
+
+
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);

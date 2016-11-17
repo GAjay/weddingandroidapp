@@ -1,5 +1,6 @@
 package com.example.gdjkj.myapplication.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,6 +23,10 @@ import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.WordAdapter;
 import com.example.gdjkj.myapplication.service.BackgroundSoundService;
 import com.example.gdjkj.myapplication.utlis.Word;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.util.ArrayList;
 
@@ -40,7 +45,22 @@ public class FunctionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_functions, container, false);
 
-
+final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.event_layout);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                .cacheOnDisc(true).resetViewBeforeLoading(true)
+                .build();
+        int deviceWidth = getResources().getDisplayMetrics().widthPixels;
+        int deviceHeight = 5*deviceWidth;
+        ImageSize targetSize = new ImageSize(deviceWidth,deviceHeight);
+        imageLoader.loadImage("drawable://"+R.drawable.ic_bg ,targetSize, options ,new SimpleImageLoadingListener() {
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                // Do whatever you want with Bitmap
+                BitmapDrawable background = new BitmapDrawable(loadedImage);
+                ll.setBackgroundDrawable(background);
+            }
+        });
         RelativeLayout rl=(RelativeLayout) rootView.findViewById(R.id.header_function);
         Bitmap myImage = BitmapFactory.decodeResource(getResources(), R.drawable.marriage_bg);
         Drawable dr = new BitmapDrawable(myImage);
