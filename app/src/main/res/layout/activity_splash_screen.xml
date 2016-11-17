@@ -25,10 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Amit &amp; Sheetal"
+            android:text="Happy "
             android:textAlignment="center"
             android:textColor="@color/screenbg"
-            android:textSize="20dp" />
+            android:textSize="28dp" />
 
 
         <com.example.gdjkj.myapplication.views.MyappTextView
@@ -36,10 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_centerInParent="true"
-            android:text="10 Nov,2016"
+            android:text="Wedding"
             android:textAlignment="center"
             android:textColor="@color/screenbg"
-            android:textSize="20dp" />
+            android:textSize="28dp" />
 
     </LinearLayout>
 

@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.ImageAdapter;
@@ -17,6 +19,13 @@ import com.example.gdjkj.myapplication.adapter.ImageAdapter;
 
 public class GalleryFragment extends Fragment {
 
+    int[] imageId = {
+            R.drawable.ic_grid_1,
+            R.drawable.ic_grid_2,
+            R.drawable.ic_grid_3,
+            R.drawable.ic_grid_4,
+            R.drawable.ic_grid_5,
+    };
     public GalleryFragment(){
 
     }
@@ -25,11 +34,20 @@ public class GalleryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
+        GridView grid ;
+        ImageAdapter adapter = new ImageAdapter(getActivity(), imageId);
+        grid=(GridView)rootView.findViewById(R.id.grid);
+        grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        GridView gridView = (GridView) rootView.findViewById(R.id.grid_view);
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(getActivity(), "You Clicked at " , Toast.LENGTH_SHORT).show();
 
-        // Instance of ImageAdapter Class
-        gridView.setAdapter(new ImageAdapter(getActivity()));
+            }
+        });
+
         return rootView;
 
     }
