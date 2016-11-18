@@ -45,15 +45,15 @@ public class FunctionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_functions, container, false);
 
-final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.event_layout);
+        final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.event_layout);
         ImageLoader imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(true)
                 .build();
         int deviceWidth = getResources().getDisplayMetrics().widthPixels;
-        int deviceHeight = 5*deviceWidth;
-        ImageSize targetSize = new ImageSize(deviceWidth,deviceHeight);
-        imageLoader.loadImage("drawable://"+R.drawable.ic_bg ,targetSize, options ,new SimpleImageLoadingListener() {
+        int deviceHeight = 5 * deviceWidth;
+        ImageSize targetSize = new ImageSize(deviceWidth, deviceHeight);
+        imageLoader.loadImage("drawable://" + R.drawable.ic_bg, targetSize, options, new SimpleImageLoadingListener() {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 // Do whatever you want with Bitmap
@@ -61,16 +61,17 @@ final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.event_layout);
                 ll.setBackgroundDrawable(background);
             }
         });
-        RelativeLayout rl=(RelativeLayout) rootView.findViewById(R.id.header_function);
+        RelativeLayout rl = (RelativeLayout) rootView.findViewById(R.id.header_function);
         Bitmap myImage = BitmapFactory.decodeResource(getResources(), R.drawable.marriage_bg);
         Drawable dr = new BitmapDrawable(myImage);
         rl.setBackgroundDrawable(dr);
         final ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word("asda", "asdas", "asdasd","abc"));
-        words.add(new Word("asda", "asdas", "asdasd","abc"));
-        words.add(new Word("asda", "asdas", "asdasd","abc"));
-        words.add(new Word("asda", "asdas", "asdasd","abc"));
-        words.add(new Word("asda", "asdas", "asdasd","abc"));
+        words.add(new Word("Ganesh Sthapna", "1 December, 2016", "12:30 Pm", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
+        words.add(new Word("Ghdi Vinayak", "1 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
+        words.add(new Word("Yagyopavit Sanskar", "2 December, 2016", "10:15 AM", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
+        words.add(new Word("Panigrahan Sanskar", "3 December, 2016", "After Mid Night", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
+        words.add(new Word("Pritibhoj", "4 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
+
         WordAdapter adapter = new WordAdapter(getActivity(), words);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.

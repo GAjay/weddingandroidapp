@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/contact_fragment"
+    android:background="@drawable/ic_bg"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:hint="Enter your phone number!"
+        android:textColorHint="@color/black"
+        android:inputType="number"
+       android:minLines="1"
+        android:textSize="14dp"
+        android:id="@+id/editText_phone" />
+    <Button
+        android:layout_below="@+id/editText_phone"
+        android:layout_width="150dp"
+        android:layout_centerInParent="true"
+        android:text="SUBMIT"
+        android:id="@+id/editText__phone_submit"
+        android:background="@color/splashbg"
+        android:textColor="@color/screenbg"
+        android:layout_height="50dp" />
+
+    <Button
+        android:layout_below="@+id/editText__phone_submit"
+        android:layout_width="150dp"
+        android:layout_centerInParent="true"
+        android:text="SEND MESSAGE"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:id="@+id/send_message"
+        android:background="@color/splashbg"
+        android:textColor="@color/screenbg"
+        android:layout_height="50dp" />
+
+</RelativeLayout>

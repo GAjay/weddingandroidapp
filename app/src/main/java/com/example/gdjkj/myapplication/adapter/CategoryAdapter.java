@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.gdjkj.myapplication.fragments.ContactFragment;
 import com.example.gdjkj.myapplication.fragments.FunctionsFragment;
 import com.example.gdjkj.myapplication.fragments.GalleryFragment;
-import com.example.gdjkj.myapplication.fragments.AvatarFragment;
+import com.example.gdjkj.myapplication.fragments.infoFragment;
 
 /**
  * {@link CategoryAdapter} is a {@link FragmentPagerAdapter} that can provide the layout for
@@ -48,7 +48,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         } else if(position == 2){
             return new ContactFragment();
         }else {
-            return new AvatarFragment();
+            return new infoFragment();
         }
     }
 

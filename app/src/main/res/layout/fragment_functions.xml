@@ -34,7 +34,7 @@
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
             android:gravity="bottom"
-            android:text="+91-9214093150"
+            android:text="+91-7737982977"
             android:textColor="@color/screenbg"
             android:textSize="16sp" />
     </RelativeLayout>

@@ -15,9 +15,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="@color/screenbg"
-        android:orientation="vertical">
+        android:padding="10dp">
 
         <com.example.gdjkj.myapplication.views.BoldTextView
             android:id="@+id/title"
@@ -61,83 +60,70 @@
                     android:layout_marginTop="15dp"
                     android:layout_weight="1">
 
+                    <ImageView
+                        android:id="@+id/ic_cal"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_events" />
 
-                    <com.example.gdjkj.myapplication.views.BoldTextView
+                    <com.example.gdjkj.myapplication.views.RegularTextView
                         android:id="@+id/date_of_function"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_calendar"
-                        android:drawablePadding="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/ic_cal"
                         android:paddingBottom="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
                         android:text="Date"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 
+                    <ImageView
+                        android:id="@+id/ic_clock"
+                        android:layout_below="@+id/date_of_function"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_clock" />
 
-                    <com.example.gdjkj.myapplication.views.BoldTextView
+                    <com.example.gdjkj.myapplication.views.RegularTextView
                         android:id="@+id/time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/date_of_function"
-                        android:drawableLeft="@drawable/ic_clock"
-                        android:drawablePadding="5dp"
                         android:paddingBottom="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/ic_clock"
                         android:text="time"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 
-                    <com.example.gdjkj.myapplication.views.BoldTextView
+                    <ImageView
+                        android:id="@+id/ic_location"
+                        android:layout_below="@+id/time"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_location" />
+
+                    <com.example.gdjkj.myapplication.views.RegularTextView
                         android:id="@+id/venue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/time"
-                        android:drawableLeft="@drawable/ic_location"
                         android:drawablePadding="5dp"
                         android:paddingBottom="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_toRightOf="@+id/ic_location"
+                        android:layout_marginLeft="10dp"
                         android:text="venue"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 
                 </RelativeLayout>
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_weight="1">
-                    <View
-                        android:id="@+id/action_divider_bottom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="2dp"
-                        android:background="#ddd" />
-
-                    <com.example.gdjkj.myapplication.views.BoldTextView
-                        android:id="@+id/welcome_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="function venue"
-                        android:textColor="@color/splashbg"
-                        android:textSize="16sp" />
-
-
-                </RelativeLayout>
 
             </LinearLayout>
 

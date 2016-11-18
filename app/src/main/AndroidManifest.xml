@@ -37,6 +37,10 @@
             android:name=".activites.DashboardActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".activites.ContainerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 
