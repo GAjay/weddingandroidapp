@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/splashbg"
     android:orientation="vertical"
-    tools:context="com.example.gdjkj.myapplication.MainActivity">
+    tools:context="com.example.gdjkj.myapplication.activites.DashboardActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -23,7 +23,7 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:textColor="@color/screenbg"
-               android:text="Gm"
+               android:text="@string/gm"
                android:textSize="20dp"
                android:padding="3dp"/>
         </LinearLayout>
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/screenbg"
-            android:text="Gaurav &amp; Madhuri"
+            android:text="@string/gaurav_amp_madhuri"
             android:textSize="18sp"
             android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>

@@ -42,7 +42,6 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new FunctionsFragment();
-
         } else if (position == 1) {
             return new GalleryFragment();
         } else if(position == 2){

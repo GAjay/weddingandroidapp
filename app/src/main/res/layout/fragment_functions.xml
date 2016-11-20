@@ -21,7 +21,7 @@
             android:layout_alignParentLeft="true"
             android:layout_margin="5dp"
             android:gravity="bottom"
-            android:text="Events"
+            android:text="@string/events"
             android:textColor="@color/screenbg"
             android:textSize="18sp" />
 
@@ -34,7 +34,7 @@
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
             android:gravity="bottom"
-            android:text="+91-7737982977"
+            android:text="@string/contact_number"
             android:textColor="@color/screenbg"
             android:textSize="16sp" />
     </RelativeLayout>

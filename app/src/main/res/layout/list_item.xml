@@ -75,7 +75,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/ic_cal"
                         android:paddingBottom="5dp"
-                        android:text="Date"
+                        android:text="@string/date"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 
@@ -96,7 +96,7 @@
                         android:paddingBottom="5dp"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/ic_clock"
-                        android:text="time"
+                        android:text="@string/time"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 
@@ -118,7 +118,7 @@
                         android:paddingBottom="5dp"
                         android:layout_toRightOf="@+id/ic_location"
                         android:layout_marginLeft="10dp"
-                        android:text="venue"
+                        android:text="@string/venue"
                         android:textColor="#808080"
                         android:textSize="16sp" />
 

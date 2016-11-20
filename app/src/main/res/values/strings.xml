@@ -1,8 +1,27 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Happy Wedding</string>
     <string name="funtions">Functions List</string>
     <string name="gallery">Gallery</string>
     <string name="aboutdeveloper">About Developer</string>
-    <string name="message">Life is a garden and love is bloom. We invite you all on the next step of this special time. We hope you will join and bless us each step we take as we come closer to our big day.</string>
+    <string name="message">Message</string>
     <string name="click_to_view_wedding">Click to view wedding</string>
+    <string name="send_message">SEND MESSAGE</string>
+    <string name="enter_your_phone_number">Enter your phone number!</string>
+    <string name="happy">Happy</string>
+    <string name="wedding">Wedding</string>
+    <string name="weddings">WEDDINGS</string>
+    <string name="made_in_heaven">MADE IN HEAVEN</string>
+    <string name="gm">Gm</string>
+    <string name="gaurav_amp_madhuri"><![CDATA[Gaurav & Madhuri]]></string>
+    <string name="events">Events</string>
+    <string name="contact_number">+91-7737982977</string>
+    <string name="gaurav_khatri">Gaurav Khatri</string>
+    <string name="the_groom">THE GROOM</string>
+    <string name="gourkhatri_gmai_com">gourkhatri@gmai.com</string>
+    <string name="developer_message">Wish You Very Happy Married Life !! \n Developed By : Ajay Kr. Maheshwari</string>
+    <string name="date">Date</string>
+    <string name="time">time</string>
+    <string name="venue">venue</string>
+    <string name="reply">Reply</string>
+    <string name="name">Name</string>
 </resources>

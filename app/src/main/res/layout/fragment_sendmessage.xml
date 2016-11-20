@@ -39,6 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
                 android:hint="Enter Your Name"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:scrollHorizontally="true"
                 android:textColor="@color/splashbg"
                 android:textSize="16sp" />
 
@@ -67,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/splashbg"
                 android:text="Submit"
+                android:id="@+id/send_wisher"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/screenbg"
                 android:layout_below="@+id/edit_wish"/>

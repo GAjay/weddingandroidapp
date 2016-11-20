@@ -28,10 +28,6 @@
             android:enabled="true"
             android:name=".service.BackgroundSoundService" />
         <!-- Main activity -->
-        <activity
-            android:name=".activites.MainActivity"
-            android:label="@string/app_name" >
-        </activity>
         <!-- Dashboard activity -->
         <activity
             android:name=".activites.DashboardActivity"

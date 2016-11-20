@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.gdjkj.myapplication.AppController;
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.fragments.SendmessageFragment;
 
@@ -71,6 +72,22 @@ public class ContainerActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        AppController controller=(AppController)getApplicationContext();
+        controller.onActivityResumed(ContainerActivity.this);
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        AppController controller=(AppController)getApplicationContext();
+        controller.onActivityPaused(ContainerActivity.this);
+        super.onPause();
+
     }
 
 }
