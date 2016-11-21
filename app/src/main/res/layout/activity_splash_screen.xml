@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_splash2">
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/drawable_circle_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.example.gdjkj.myapplication.views.DancingTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/happy"
+            android:textAlignment="center"
+            android:textColor="@color/screenbg"
+            android:textSize="28dp" />
+
+
+        <com.example.gdjkj.myapplication.views.DancingTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_centerInParent="true"
+            android:text="@string/wedding"
+            android:textAlignment="center"
+            android:textColor="@color/screenbg"
+            android:textSize="28dp" />
+
+    </LinearLayout>
+
+    <com.example.gdjkj.myapplication.views.BoldTextView
+
+        android:id="@+id/myappTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:gravity="center"
+        android:text="@string/weddings"
+        android:textAlignment="center"
+        android:textColor="@color/screenbg"
+        android:textSize="20dp" />
+
+    <com.example.gdjkj.myapplication.views.RegularTextView
+
+        android:id="@+id/myapp2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="@string/made_in_heaven"
+        android:textAlignment="center"
+        android:textColor="@color/screenbg"
+        android:textSize="12dp" />
+</RelativeLayout>

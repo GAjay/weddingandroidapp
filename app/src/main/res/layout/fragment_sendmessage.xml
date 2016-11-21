@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sendmessage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="3dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:contentPadding="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/screenbg"
+            android:layout_margin="10dp"
+            android:padding="10dp">
+
+            <com.example.gdjkj.myapplication.views.BoldTextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:hint="Enter Your Name"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:scrollHorizontally="true"
+                android:textColor="@color/splashbg"
+                android:textSize="16sp" />
+
+            <com.example.gdjkj.myapplication.views.BoldTextView
+                android:id="@+id/wish"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_name"
+                android:text="Wish"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wish"
+                android:hint="Enter Your Wish"
+                android:textColor="@color/splashbg"
+                android:minLines="5"
+                android:gravity="start"
+
+                android:id="@+id/edit_wish"
+                android:textSize="16sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/splashbg"
+                android:text="Submit"
+                android:id="@+id/send_wisher"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/screenbg"
+                android:layout_below="@+id/edit_wish"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
