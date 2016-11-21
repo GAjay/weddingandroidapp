@@ -18,6 +18,7 @@ import com.example.gdjkj.myapplication.AppController;
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.CategoryAdapter;
 import com.example.gdjkj.myapplication.fragments.ContactFragment;
+import com.example.gdjkj.myapplication.fragments.RespondFragment;
 import com.example.gdjkj.myapplication.fragments.SendmessageFragment;
 import com.example.gdjkj.myapplication.service.BackgroundSoundService;
 
@@ -113,10 +114,17 @@ public class DashboardActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("resultcode"+resultCode);
         System.out.println("requestcode"+requestCode);
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.viewpager);
-        if(f instanceof ContactFragment){
-            f.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 102) {
+            Fragment f = getSupportFragmentManager().findFragmentById(R.id.viewpager);
+            if (f instanceof ContactFragment) {
+                f.onActivityResult(requestCode, resultCode, data);
+            }
         }
-
+        else if(requestCode == 103){
+            Fragment f = getSupportFragmentManager().findFragmentById(R.id.viewpager);
+            if (f instanceof RespondFragment) {
+                f.onActivityResult(requestCode, resultCode, data);
+            }
+        }
     }
 }

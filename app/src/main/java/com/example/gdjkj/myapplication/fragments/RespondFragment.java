@@ -27,6 +27,7 @@ import com.example.gdjkj.myapplication.adapter.MessageAdapter;
 import com.example.gdjkj.myapplication.model.Allwishes;
 import com.example.gdjkj.myapplication.model.Response;
 import com.example.gdjkj.myapplication.utlis.SharedPreference;
+import com.example.gdjkj.myapplication.utlis.Utlis;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
@@ -85,6 +86,7 @@ public class RespondFragment extends Fragment {
     }
 
     public void getAllwish(final View rootView) {
+        Utlis.hideKeyBoard(rootView,getActivity());
         final ProgressDialog progress = new ProgressDialog(getActivity());
         progress.setMessage("Loading");
         progress.setIndeterminate(true);
@@ -96,6 +98,7 @@ public class RespondFragment extends Fragment {
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, final retrofit2.Response<Response> response) {
+
                 if (response.isSuccessful()) {
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -122,7 +125,7 @@ public class RespondFragment extends Fragment {
         });
     }
 
-    private void setData(View rootView, ArrayList<Allwishes> allwishes) {
+    private void setData(View rootView, final ArrayList<Allwishes> allwishes) {
         if(allwishes.size()>0) {
             final SharedPreference sp = new SharedPreference(getActivity());
             MessageAdapter adapter = new MessageAdapter(getActivity(), allwishes, sp.getStorePhoneNumber());
@@ -133,8 +136,9 @@ public class RespondFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getActivity(), ContainerActivity.class);
-                    intent.putExtra("screenName", 102);
-                    startActivityForResult(intent, 102);
+                    intent.putExtra("entity_id",allwishes.get(i).getEntityid());
+                    intent.putExtra("screenName", 103);
+                    startActivityForResult(intent, 103);
                 }
             });
 
@@ -180,6 +184,16 @@ public class RespondFragment extends Fragment {
                 }
             });
             alertDialog.show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 103) {
+            // Make sure the request was successful
+            getAllwish(rootView);
+
         }
     }
 }

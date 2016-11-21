@@ -27,6 +27,7 @@ import com.example.gdjkj.myapplication.adapter.MessageAdapter;
 import com.example.gdjkj.myapplication.model.Allwishes;
 import com.example.gdjkj.myapplication.model.Response;
 import com.example.gdjkj.myapplication.utlis.SharedPreference;
+import com.example.gdjkj.myapplication.utlis.Utlis;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
@@ -127,6 +128,7 @@ public class ContactFragment extends Fragment {
     }
 
     public void getAllwish(final View rootView) {
+        Utlis.hideKeyBoard(rootView,getActivity());
         final ProgressDialog progress = new ProgressDialog(getActivity());
         progress.setMessage("Loading");
         progress.setIndeterminate(true);
@@ -181,6 +183,8 @@ public class ContactFragment extends Fragment {
             ListView listView = (ListView) rootView.findViewById(R.id.list_message);
             listView.setVisibility(View.VISIBLE);
             listView.setAdapter(adapter);
+            Button button2 = (Button) rootView.findViewById(R.id.send_message);
+            button2.setVisibility(View.GONE);
             Button button1 = (Button) rootView.findViewById(R.id.send_message_wish);
             button1.setVisibility(View.VISIBLE);
             button1.setOnClickListener(new View.OnClickListener() {

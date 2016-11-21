@@ -17,14 +17,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.gdjkj.myapplication.ApiClient;
 import com.example.gdjkj.myapplication.R;
-import com.example.gdjkj.myapplication.model.Allwishes;
-import com.example.gdjkj.myapplication.model.Response;
 import com.example.gdjkj.myapplication.model.request.SendMessageRequest;
+import com.example.gdjkj.myapplication.model.request.SendReplyMessage;
 import com.example.gdjkj.myapplication.utlis.SharedPreference;
 import com.example.gdjkj.myapplication.utlis.Utlis;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -33,39 +30,28 @@ import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-
 /**
- * Created by ajay on 18/11/16.
+ * Created by ajay on 21/11/16.
  */
-public class SendmessageFragment extends Fragment {
+public class ReplymessageFragment extends Fragment {
 
-    public SendmessageFragment() {
-    }
+    View rootView;
+    String Entityid;
+    public ReplymessageFragment(){
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        getActivity().setTitle("Send Message");
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle("Send Message");
-        final View rootView = inflater.inflate(R.layout.fragment_sendmessage, container, false);
-        final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.sendmessage);
+        rootView = inflater.inflate(R.layout.fragment_reply, container, false);
+       Entityid = getActivity().getIntent().getExtras().getString("entity_id");
+        final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.replymessage);
         ImageLoader imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(true)
@@ -82,36 +68,31 @@ public class SendmessageFragment extends Fragment {
                         ll.setBackgroundDrawable(background);
                     }
                 });
-        Button button = (Button) rootView.findViewById(R.id.send_wisher);
+        Button button = (Button)rootView.findViewById(R.id.reply_wisher);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                sendWish(rootView);
+            public void onClick(View view) {
+                replyWish(rootView);
             }
         });
-
         return rootView;
     }
 
-    public void sendWish(final View rootView) {
+    public void replyWish(final View rootView) {
         Utlis.hideKeyBoard(rootView,getActivity());
         final SharedPreference sp = new SharedPreference(getActivity());
-        EditText name_editText = (EditText) rootView.findViewById(R.id.edit_name);
-        EditText wish_editText = (EditText) rootView.findViewById(R.id.edit_wish);
-        String value_name_wisher = name_editText.getText().toString();
-        String value_wish_wisher = wish_editText.getText().toString();
+        EditText replyEdittext = (EditText) rootView.findViewById(R.id.edit_reply);
+
+        String Valu_wish = replyEdittext.getText().toString();
         final ProgressDialog progress = new ProgressDialog(getActivity());
-        progress.setMessage("Sending Message!");
+        progress.setMessage("Replying Message!");
         progress.setIndeterminate(true);
         progress.setProgress(10);
         progress.show();
-        String tokennumber= name_editText.getText()+"15556"+wish_editText.getText();
-        String number= sp.getStorePhoneNumber();
         // will call web service here.
         ApiClient.ApiInterface apiService = ApiClient.getApiCall();
-        SendMessageRequest sendMessageRequest = new SendMessageRequest(value_name_wisher,number,value_wish_wisher
-                ,tokennumber);
-        Call<ResponseBody> call = apiService.sendMessage(sendMessageRequest);
+        SendReplyMessage sendReplyMessage = new SendReplyMessage(Entityid,Valu_wish);
+        Call<ResponseBody> call = apiService.sendReply(sendReplyMessage);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, final retrofit2.Response<ResponseBody> response) {
@@ -136,7 +117,7 @@ public class SendmessageFragment extends Fragment {
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 if (null != progress) {
                     progress.dismiss();
-                handleWebserviceFailureResponse(t,rootView);}
+                    handleWebserviceFailureResponse(t,rootView);}
             }
         });
 
@@ -156,7 +137,7 @@ public class SendmessageFragment extends Fragment {
             alertDialog.setMessage("Internet connection error. Please try again.");
             alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog,int which) {
-                    sendWish(rootView);
+                    replyWish(rootView);
                 }
             });
             alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -171,7 +152,7 @@ public class SendmessageFragment extends Fragment {
             alertDialog.setMessage("Something went wrong.");
             alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog,int which) {
-                   dialog.dismiss();
+                    dialog.dismiss();
                 }
             });
             alertDialog.show();
