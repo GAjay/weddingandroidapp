@@ -7,18 +7,18 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-
+import android.widget.TextView;
 
 import com.example.gdjkj.myapplication.ApiClient;
 import com.example.gdjkj.myapplication.R;
@@ -39,24 +39,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 /**
- * Created by gdjkj on 10/24/16.
+ * Created by ajay on 21/11/16.
  */
 
-public class ContactFragment extends Fragment {
+public class RespondFragment extends Fragment {
 
     View rootView;
 
-    public ContactFragment() {
+    public RespondFragment() {
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_contact, container, false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_respond, container, false);
         final SharedPreference sp = new SharedPreference(getActivity());
         Log.d("number", sp.getStorePhoneNumber());
-        final Button button = (Button) rootView.findViewById(R.id.editText__phone_submit);
 
-        final RelativeLayout ll = (RelativeLayout) rootView.findViewById(R.id.contact_fragment);
+        final RelativeLayout ll = (RelativeLayout) rootView.findViewById(R.id.respond_fragment);
         ImageLoader imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
                 .cacheOnDisc(true).resetViewBeforeLoading(true)
@@ -73,56 +73,14 @@ public class ContactFragment extends Fragment {
                         ll.setBackgroundDrawable(background);
                     }
                 });
-
-        return rootView;
+        return  rootView;
     }
 
-
     @Override
-    public void setUserVisibleHint(boolean menuVisible) {
-        super.setUserVisibleHint(menuVisible);
-
-        if (menuVisible) {
-            Log.d("inside", "inside");
-            final Button button = (Button) rootView.findViewById(R.id.editText__phone_submit);
-            final SharedPreference sp = new SharedPreference(getActivity());
-            if (TextUtils.isEmpty(sp.getStorePhoneNumber())) {
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (checkFieldValidation(rootView)) {
-                            final String phonenumber = ((EditText) rootView.
-                                    findViewById(R.id.editText_phone)).getText().toString();
-                            System.out.println(phonenumber);
-                            sp.storePhoneNumber(phonenumber);
-                            EditText editText = (EditText) rootView.findViewById(R.id.editText_phone);
-                            editText.setVisibility(View.GONE);
-                            button.setVisibility(View.GONE);
-                            getAllwish(rootView);
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setMessage("Not Valid Mobile Number.")
-                                    .setCancelable(false)
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            //do things
-                                            dialog.cancel();
-                                        }
-
-                                    });
-                            AlertDialog alert = builder.create();
-                            alert.show();
-                        }
-
-                    }
-                });
-            } else {
-                EditText editText = (EditText) rootView.findViewById(R.id.editText_phone);
-                editText.setVisibility(View.GONE);
-                button.setVisibility(View.GONE);
-                getAllwish(rootView);
-
-            }
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            getAllwish(rootView);
         }
     }
 
@@ -144,8 +102,10 @@ public class ContactFragment extends Fragment {
                         public void run() {
                             if (null != progress) {
                                 progress.dismiss();
-                                ArrayList<Allwishes> allwishes = response.body().getAllwishes();
-                                setData(rootView, allwishes);
+
+                                    ArrayList<Allwishes> allwishes = response.body().getAllwishes();
+                                    setData(rootView, allwishes);
+
                             }
                         }
                     }, 3000);
@@ -157,54 +117,35 @@ public class ContactFragment extends Fragment {
             public void onFailure(Call<Response> call, Throwable t) {
                 if (null != progress) {
                     progress.dismiss();
-                handleWebserviceFailureResponse(t,rootView);}
+                    handleWebserviceFailureResponse(t,rootView);}
             }
         });
     }
 
     private void setData(View rootView, ArrayList<Allwishes> allwishes) {
-        boolean exist = false;
-        ArrayList<Allwishes> allwishes1 = new ArrayList();
-        final SharedPreference sp = new SharedPreference(getActivity());
-        Log.d("Size", String.valueOf(allwishes.size()));
-        for (Allwishes allwish : allwishes) {
-            Log.d("Getting Number", allwish.getTelephone());
-            Log.d("Stored Number", sp.getStorePhoneNumber());
-            if (allwish.getTelephone().equals(sp.getStorePhoneNumber())) {
-                allwishes1.add(allwish);
-                exist = true;
-            }
-        }
-        if (exist) {
-            Log.d("exist", String.valueOf(exist));
-            MessageAdapter adapter = new MessageAdapter(getActivity(), allwishes1, sp.getStorePhoneNumber());
-            ListView listView = (ListView) rootView.findViewById(R.id.list_message);
+        if(allwishes.size()>0) {
+            final SharedPreference sp = new SharedPreference(getActivity());
+            MessageAdapter adapter = new MessageAdapter(getActivity(), allwishes, sp.getStorePhoneNumber());
+            ListView listView = (ListView) rootView.findViewById(R.id.listview_respond);
             listView.setVisibility(View.VISIBLE);
             listView.setAdapter(adapter);
-            Button button1 = (Button) rootView.findViewById(R.id.send_message_wish);
-            button1.setVisibility(View.VISIBLE);
-            button1.setOnClickListener(new View.OnClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getActivity(), ContainerActivity.class);
                     intent.putExtra("screenName", 102);
                     startActivityForResult(intent, 102);
                 }
             });
 
-        } else {
-            Log.d("exist", String.valueOf(exist));
-            Button button1 = (Button) rootView.findViewById(R.id.send_message);
-            button1.setVisibility(View.VISIBLE);
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), ContainerActivity.class);
-                    intent.putExtra("screenName", 102);
-                    startActivityForResult(intent, 102);
-                }
-            });
         }
+        else{
+            ListView listView = (ListView) rootView.findViewById(R.id.listview_respond);
+            listView.setVisibility(View.GONE);
+            TextView textView = (TextView) rootView.findViewById(R.id.empty);
+                    textView.setVisibility(View.VISIBLE);
+        }
+
     }
 
     /** Method to handle the all situation when web service calling get failed.
@@ -239,30 +180,6 @@ public class ContactFragment extends Fragment {
                 }
             });
             alertDialog.show();
-        }
-    }
-    /**
-     * checking fields for valid values.
-     *
-     * @param rootView
-     * @return : true or false on the basis of result.
-     */
-    private boolean checkFieldValidation(View rootView) {
-        boolean isValid = true;
-        String pin = ((EditText) rootView.findViewById(R.id.editText_phone)).getText().toString();
-        if (pin.length() < 10) {
-            return false;
-        }
-        return isValid;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
-        if (requestCode == 102) {
-            // Make sure the request was successful
-            getAllwish(rootView);
-
         }
     }
 }

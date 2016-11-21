@@ -18,23 +18,11 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_grid_3" />
 
-            <ImageButton
-                android:id="@+id/user_profile_photo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_below="@+id/header_cover_image"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="-60dp"
-                android:background="@drawable/profile_circular_border_imageview"
-                android:elevation="5dp"
-                android:padding="2dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/avatar_g" />
-
             <RelativeLayout
                 android:id="@+id/profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:foregroundGravity="bottom"
                 android:layout_below="@+id/header_cover_image"
                 android:background="#B22222"
                 android:elevation="4dp"
@@ -47,7 +35,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="76dp"
                     android:text="@string/gaurav_khatri"
-                    android:textColor="#fff"
+                    android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <com.example.gdjkj.myapplication.views.BoldTextView
@@ -57,13 +45,24 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="@string/the_groom"
-                    android:textColor="#fff"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
 
-
+            <ImageButton
+                android:id="@+id/user_profile_photo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_below="@+id/header_cover_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-60dp"
+                android:background="@drawable/profile_circular_border_imageview"
+                android:elevation="5dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar_g" />
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

@@ -41,9 +41,10 @@ public class ContainerActivity extends AppCompatActivity {
 
         switch (screenName){
             case 102:
-
                 fragment = new SendmessageFragment();
-
+                break;
+            case 103:
+                fragment = new ReplymessageFragment();
                 break;
 
         }

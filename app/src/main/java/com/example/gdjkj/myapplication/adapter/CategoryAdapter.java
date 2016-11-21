@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.gdjkj.myapplication.fragments.ContactFragment;
 import com.example.gdjkj.myapplication.fragments.FunctionsFragment;
 import com.example.gdjkj.myapplication.fragments.GalleryFragment;
+import com.example.gdjkj.myapplication.fragments.RespondFragment;
 import com.example.gdjkj.myapplication.fragments.infoFragment;
 
 /**
@@ -45,7 +46,8 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         } /*else if (position == 1) {
             return new GalleryFragment();
         } */else if(position == 1){
-            return new ContactFragment();
+            return  new RespondFragment();
+            //return new ContactFragment();
         }else {
             return new infoFragment();
         }
