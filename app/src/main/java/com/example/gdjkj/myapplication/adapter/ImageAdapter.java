@@ -63,8 +63,6 @@ public class ImageAdapter extends BaseAdapter{
            // TextView textView = (TextView) grid.findViewById(R.id.grid_text);
             ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
             //textView.setText(web[position]);
-
-
             imageLoader.displayImage("drawable://" +Imageid[position], imageView, options);
         } else {
             grid = (View) convertView;

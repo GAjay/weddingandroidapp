@@ -1,10 +1,14 @@
 package com.example.gdjkj.myapplication.fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import com.example.gdjkj.myapplication.model.Response;
 import com.example.gdjkj.myapplication.model.request.SendMessageRequest;
 import com.example.gdjkj.myapplication.utlis.SharedPreference;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.ResponseBody;
@@ -90,7 +95,9 @@ public class SendmessageFragment extends Fragment {
 
                             if (null != progress) {
                                 progress.dismiss();
-                                System.out.println(response.body().toString());
+                                Intent intent=new Intent();
+                                getActivity().setResult(Activity.RESULT_OK,intent);
+                                getActivity().finish();//finishing activity
                             }
                         }
                     }, 3000);
@@ -100,9 +107,47 @@ public class SendmessageFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                if (null != progress) {
+                    progress.dismiss();
+                handleWebserviceFailureResponse(t,rootView);}
             }
         });
 
+    }
+
+
+    /** Method to handle the all situation when web service calling get failed.
+     * @param t : Error thrown by network libray in web service calling.
+     * @param rootView : root view of the fragment.
+     */
+    private void handleWebserviceFailureResponse(Throwable t, final View rootView) {
+        // checking if error is instance of IO class, then its internet error. other wise
+        // some error from server side.
+        if (null != t && t instanceof IOException) {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage("Internet connection error. Please try again.");
+            alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,int which) {
+                    sendWish(rootView);
+                }
+            });
+            alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        } else {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage("Something went wrong.");
+            alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,int which) {
+                   dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
     }
 }

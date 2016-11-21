@@ -81,6 +81,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
+                    android:onClick="onClick"
                     android:padding="5dp"
                     android:src="@drawable/ic_avatar" />
 
@@ -93,6 +94,7 @@
                     android:background="#fff"
                     android:clickable="true"
                     android:gravity="center_vertical"
+                    android:onClick="onClick"
                     android:padding="20dp"
                     android:text="@string/contact_number" />
 

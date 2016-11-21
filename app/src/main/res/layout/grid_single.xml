@@ -10,6 +10,7 @@
         android:id="@+id/grid_image"
         android:layout_width="match_parent"
         android:scaleType="fitXY"
+
         android:layout_height="150dp">
     </ImageView>
 

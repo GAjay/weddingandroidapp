@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +17,8 @@ import com.example.gdjkj.myapplication.AppController;
 
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.CategoryAdapter;
+import com.example.gdjkj.myapplication.fragments.ContactFragment;
+import com.example.gdjkj.myapplication.fragments.SendmessageFragment;
 import com.example.gdjkj.myapplication.service.BackgroundSoundService;
 
 import java.util.Calendar;
@@ -23,7 +27,6 @@ public class DashboardActivity extends AppCompatActivity {
     TabLayout tabLayout;
     private int[] tabIcons = {
             R.drawable.ic_events,
-            R.drawable.ic_gallery,
             R.drawable.ic_contact,
             R.drawable.ic_avatar
 
@@ -78,7 +81,7 @@ public class DashboardActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
 
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
+       // tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
 
 
@@ -102,6 +105,18 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("resultcode"+resultCode);
+        System.out.println("requestcode"+requestCode);
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.viewpager);
+        if(f instanceof ContactFragment){
+            f.onActivityResult(requestCode,resultCode,data);
+        }
 
     }
 }

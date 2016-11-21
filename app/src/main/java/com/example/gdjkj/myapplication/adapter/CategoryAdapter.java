@@ -42,9 +42,9 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new FunctionsFragment();
-        } else if (position == 1) {
+        } /*else if (position == 1) {
             return new GalleryFragment();
-        } else if(position == 2){
+        } */else if(position == 1){
             return new ContactFragment();
         }else {
             return new infoFragment();
@@ -56,7 +56,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
     @Override

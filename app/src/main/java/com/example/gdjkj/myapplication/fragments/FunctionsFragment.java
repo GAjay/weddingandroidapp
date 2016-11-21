@@ -68,7 +68,7 @@ public class FunctionsFragment extends Fragment {
         final ArrayList<Word> words = new ArrayList<Word>();
         words.add(new Word("Ganesh Sthapna", "1 December, 2016", "12:30 Pm", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
         words.add(new Word("Ghdi Vinayak", "1 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
-        words.add(new Word("Yagyopavit Sanskar", "2 December, 2016", "10:15 AM", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
+        words.add(new Word("Yagyopavit Sanskar", "2 December, 2016", "10:15 AM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
         words.add(new Word("Panigrahan Sanskar", "3 December, 2016", "After Mid Night", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
         words.add(new Word("Pritibhoj", "4 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
 
