@@ -2,43 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_splash2">
+    android:background="@color/splash_color_cream">
 
     <LinearLayout
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
         android:layout_margin="5dp"
-        android:background="@drawable/drawable_circle_bg"
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.example.gdjkj.myapplication.views.DancingTextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/happy"
-            android:textAlignment="center"
-            android:textColor="@color/screenbg"
-            android:textSize="28dp" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_main_logo" />
 
-
-        <com.example.gdjkj.myapplication.views.DancingTextView
+        <com.example.gdjkj.myapplication.views.BoldTextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
-            android:layout_centerInParent="true"
-            android:text="@string/wedding"
+            android:layout_height="50dp"
+            android:layout_marginBottom="41dp"
+            android:gravity="center"
+            android:layout_marginTop="-30dp"
+            android:text="Mayank Weds Sheetal"
             android:textAlignment="center"
-            android:textColor="@color/screenbg"
-            android:textSize="28dp" />
+            android:textColor="@color/splashbg"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <com.example.gdjkj.myapplication.views.BoldTextView
 
-        android:id="@+id/myappTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -47,12 +40,11 @@
         android:gravity="center"
         android:text="@string/weddings"
         android:textAlignment="center"
-        android:textColor="@color/screenbg"
+        android:textColor="@color/splashbg"
         android:textSize="20dp" />
 
     <com.example.gdjkj.myapplication.views.RegularTextView
 
-        android:id="@+id/myapp2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -61,6 +53,6 @@
         android:gravity="center"
         android:text="@string/made_in_heaven"
         android:textAlignment="center"
-        android:textColor="@color/screenbg"
+        android:textColor="@color/splashbg"
         android:textSize="12dp" />
 </RelativeLayout>

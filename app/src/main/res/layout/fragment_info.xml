@@ -11,15 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/header_cover_image"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_grid_3" />
-
             <ImageButton
-                android:id="@+id/user_profile_photo"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_below="@+id/header_cover_image"
@@ -27,16 +19,16 @@
                 android:layout_marginTop="-60dp"
                 android:background="@drawable/profile_circular_border_imageview"
                 android:elevation="5dp"
-                android:padding="2dp"
+                android:padding="3dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/avatar_g" />
+                android:src="@drawable/ic_av" />
 
             <RelativeLayout
                 android:id="@+id/profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_cover_image"
-                android:background="#B22222"
+                android:background="@color/splashbg"
                 android:elevation="4dp"
                 android:paddingBottom="20dp">
 
@@ -46,15 +38,15 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="76dp"
-                    android:text="@string/gaurav_khatri"
+                    android:text="Mayank Khajanchi"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <com.example.gdjkj.myapplication.views.BoldTextView
-                    android:id="@+id/textView_groom"
-                    android:layout_below="@+id/user_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_profile_name"
                     android:layout_centerHorizontal="true"
                     android:text="@string/the_groom"
                     android:textColor="#fff"
@@ -63,102 +55,112 @@
 
             </RelativeLayout>
 
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/profile_layout"
-                android:layout_marginBottom="50dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp">
+                android:background="@color/splash_color_cream">
 
-                <ImageView
-                    android:id="@+id/imageView_contact"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_avatar" />
-
-                <TextView
-                    android:id="@+id/contact_number"
+                <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_toRightOf="@+id/imageView_contact"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:gravity="center_vertical"
-                    android:padding="20dp"
-                    android:text="@string/contact_number" />
 
-                <ImageView
-                    android:id="@+id/imageView_contact_whatsup"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/contact_number"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_whatsup_icon" />
+                    android:layout_marginBottom="50dp"
 
-                <TextView
-                    android:id="@+id/textView_whatsup"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/contact_number"
-                    android:layout_margin="5dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_toRightOf="@+id/imageView_contact"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:padding="20dp"
-                    android:text="@string/contact_number" />
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="5dp">
 
-                <ImageView
-                    android:id="@+id/imageView_contact_gmail"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/textView_whatsup"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="5dp"
-                    android:src="@drawable/gmail" />
+                    <ImageView
+                        android:id="@+id/imageView_contact"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_call" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView_whatsup"
-                    android:layout_margin="5dp"
-                    android:layout_toRightOf="@+id/imageView_contact"
-                    android:background="#fff"
-                    android:clickable="true"
-                    android:padding="20dp"
-                    android:text="@string/gourkhatri_gmai_com" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/contact_number"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@+id/imageView_contact"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:padding="20dp"
+                        android:textSize="16sp"
+                        android:text="9414217825" />
+
+                    <ImageView
+                        android:id="@+id/imageView_contact2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/contact_number"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_call" />
+
+                    <TextView
+                        android:id="@+id/contact_number2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/contact_number"
+                        android:layout_margin="5dp"
+                        android:layout_toRightOf="@+id/imageView_contact"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical"
+                        android:padding="20dp"
+                        android:text="9460780288" />
+
+
+                    <ImageView
+                        android:id="@+id/imageView_contact_whatsup"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/contact_number2"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_whatsup_icon" />
+
+                    <TextView
+                        android:id="@+id/textView_whatsup"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/contact_number2"
+                        android:layout_margin="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_toRightOf="@+id/imageView_contact"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:padding="20dp"
+                        android:textSize="16sp"
+                        android:text="9784949989" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/header_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop" />
 
         </RelativeLayout>
 
     </ScrollView>
 
-    <com.example.gdjkj.myapplication.views.RegularTextView
-        android:id="@+id/textview_developer_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/splashbg"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/developer_message"
-        android:textColor="@color/screenbg"
-        android:textSize="12sp" />
 </RelativeLayout>

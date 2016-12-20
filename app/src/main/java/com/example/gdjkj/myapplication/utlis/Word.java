@@ -13,10 +13,10 @@ public class Word {
     private String dateOfFunction;
 
     /** Audio resource ID for the word */
-    private String placeOfFunction;
+    private String timeOfFunction;
 
     /** Image resource ID for the word */
-    private String locationImage;
+    private String location;
 
     /** Constant value that represents no image was provided for this word */
     private static final int NO_IMAGE_PROVIDED = -1;
@@ -27,14 +27,14 @@ public class Word {
      * @param functionName is the string resource ID for the word in a language that the
      *                             user is already familiar with (such as English)
      * @param dateOfFunction is the string resource Id for the word in the Miwok language
-     * @param placeOfFunction is the resource ID for the audio file associated with this word
+     * @param timeOfFunction is the resource ID for the audio file associated with this word
      */
-    public Word(String functionName, String dateOfFunction, String placeOfFunction , String locationImage) {
+    public Word(String functionName, String dateOfFunction, String timeOfFunction , String location) {
 
         this.functionName = functionName;
         this.dateOfFunction = dateOfFunction;
-        this.placeOfFunction = placeOfFunction;
-        this.locationImage = locationImage;
+        this.timeOfFunction = timeOfFunction;
+        this.location = location;
     }
 
 
@@ -56,15 +56,15 @@ public class Word {
     /**
      * Return the image resource ID of the word.
      */
-    public String getPlaceOfFunction() {
-        return placeOfFunction;
+    public String getTimeOfFunction() {
+        return timeOfFunction;
     }
 
 
     /**
      * Return the audio resource ID of the word.
      */
-    public String getLocationImage() {
-        return locationImage;
+    public String getLocation() {
+        return location;
     }
 }

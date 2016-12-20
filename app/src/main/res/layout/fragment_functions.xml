@@ -2,48 +2,48 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/event_layout"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/header_function"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-       >
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/imageView_header"
+            android:layout_width="match_parent"
+            android:layout_height="120dp" />
 
         <com.example.gdjkj.myapplication.views.BoldTextView
-            android:id="@+id/boldTextView"
             android:layout_width="wrap_content"
             android:layout_height="10dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:layout_margin="5dp"
             android:gravity="bottom"
-            android:text="@string/events"
+            android:text="Khajanchi"
             android:textColor="@color/screenbg"
             android:textSize="18sp" />
 
         <com.example.gdjkj.myapplication.views.BoldTextView
-            android:id="@+id/contact"
             android:layout_width="wrap_content"
             android:layout_height="10dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_margin="5dp"
             android:gravity="bottom"
-            android:text="@string/contact_number"
+            android:text="Chordiya"
             android:textColor="@color/screenbg"
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:background="@color/splash_color_cream"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@null"
-        android:padding="5dp" />
+        android:scrollbars="vertical" />
 
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.gdjkj.myapplication.R;
-import com.example.gdjkj.myapplication.service.BackgroundSoundService;
 
 /**
  * Created by gdjkj on 10/23/16.

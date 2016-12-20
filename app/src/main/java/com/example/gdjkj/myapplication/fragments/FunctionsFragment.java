@@ -1,88 +1,83 @@
 package com.example.gdjkj.myapplication.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-/*import com.example.gdjkj.myapplication.adapter.ListviewContactAdapter;*/
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.gdjkj.myapplication.R;
 import com.example.gdjkj.myapplication.adapter.WordAdapter;
-import com.example.gdjkj.myapplication.service.BackgroundSoundService;
 import com.example.gdjkj.myapplication.utlis.Word;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gdjkj on 10/24/16.
  */
 
 public class FunctionsFragment extends Fragment {
-    TextView text, vers;
 
     public FunctionsFragment() {
     }
-
+    private List<Word> functionList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private WordAdapter wAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_functions, container, false);
+        final ImageView rl = (ImageView) rootView.findViewById(R.id.imageView_header);
+        Glide.with(getContext())
+                .load("https://lh3.googleusercontent.com/Easlpbh7MVDGAy8Y3GXRt0YGpEi19Q_12UnXpIwEADcVW7YaIa60EPDQyG7bsB0PEf6uBhhJIfYuzeCkipWoV5IL1hGiVieCGlBKoPuUIRsNYlBahdy6SHFUlTn3Sc8kNtSu")
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.color.colorPrimary)
+                .crossFade()
+                .into(rl);
+        //System.gc();
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
-        final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.event_layout);
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .build();
-        int deviceWidth = getResources().getDisplayMetrics().widthPixels;
-        int deviceHeight = 5 * deviceWidth;
-        ImageSize targetSize = new ImageSize(deviceWidth, deviceHeight);
-        imageLoader.loadImage("drawable://" + R.drawable.ic_bg, targetSize, options, new SimpleImageLoadingListener() {
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                // Do whatever you want with Bitmap
-                BitmapDrawable background = new BitmapDrawable(loadedImage);
-                ll.setBackgroundDrawable(background);
-            }
-        });
-        RelativeLayout rl = (RelativeLayout) rootView.findViewById(R.id.header_function);
-        Bitmap myImage = BitmapFactory.decodeResource(getResources(), R.drawable.marriage_bg);
-        Drawable dr = new BitmapDrawable(myImage);
-        rl.setBackgroundDrawable(dr);
-        final ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word("Ganesh Sthapna", "1 December, 2016", "12:30 Pm", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
-        words.add(new Word("Ghdi Vinayak", "1 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
-        words.add(new Word("Yagyopavit Sanskar", "2 December, 2016", "10:15 AM", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
-        words.add(new Word("Panigrahan Sanskar", "3 December, 2016", "After Mid Night", "Maheshwari Nyati Nohra,  Nadi Mohalla, Pali"));
-        words.add(new Word("Pritibhoj", "4 December, 2016", "07:15 PM", "Sevgo Ki Baghichi, Bhaskar Mohalla, Pokaran"));
+        wAdapter = new WordAdapter(functionList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(wAdapter);
 
-        WordAdapter adapter = new WordAdapter(getActivity(), words);
-
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_list.xml layout file.
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
-
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
-        listView.setAdapter(adapter);
+        prepareMovieData();
+        System.gc();
         return rootView;
+    }
+
+    private void prepareMovieData() {
+//Word(String functionName, String dateOfFunction, String timeOfFunction , String location)
+        Word movie = new Word("HaathKaam", "17 January, 2017", "1:30PM","Industrial Area, Rani Bazar, Bikaner");
+        functionList.add(movie);// Baraat parsthan,,
+
+        movie = new Word("Sangeet Sandhya", "18 January, 2017", "6:00PM","Ghodi Parashvnath, " +
+                "Goga Gate, Bikaner");
+        functionList.add(movie);
+
+        movie = new Word("Mayara", "19 January, 2017", "6:15PM","Ghodi Parashvnath, " +
+                "Goga Gate, Bikaner");
+        functionList.add(movie);
+
+        movie = new Word("Baraat Parsthan", "19 January, 2017", "6:15PM","Ghodi Parashvnath, " +
+                "Goga Gate, Bikaner");
+        functionList.add(movie);
+
+        movie = new Word("SvruchiBhoj", "19 January, 2017", "7:00PM","Ghodi Parashvnath, Goga Gate, Bikaner");
+        functionList.add(movie);
+
+        wAdapter.notifyDataSetChanged();
     }
 
 

@@ -9,9 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.gdjkj.myapplication.fragments.ContactFragment;
 import com.example.gdjkj.myapplication.fragments.FunctionsFragment;
-import com.example.gdjkj.myapplication.fragments.GalleryFragment;
 import com.example.gdjkj.myapplication.fragments.infoFragment;
 
 /**
@@ -42,11 +40,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new FunctionsFragment();
-        } else if (position == 1) {
-            return new GalleryFragment();
-        } else if(position == 2){
-            return new ContactFragment();
-        }else {
+        }  else {
             return new infoFragment();
         }
     }
@@ -56,7 +50,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 
     @Override
